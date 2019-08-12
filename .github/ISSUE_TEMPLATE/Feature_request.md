@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
+about: Software is never done! Suggest an idea to make this project even better
 
 ---
 
