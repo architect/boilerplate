@@ -41,10 +41,10 @@ Note: Most of these processes should be retired in favor of automated workflows,
   - To put a super fine point on this: we have released modules that were only tested locally, and they failed when re-packaged and distributed via NPM as proper dependencies. This really happens! So...
 
 3. **Cut an RC**
-  - This is a manual process
-  - Format: `$major.$minor.$patch-RC.$number`, example where the current release version is `1.0.3`: `1.0.4-RC.1`
-  - You must amend both root `package.json` and `package-lock.json` with the RC version
-  - Release to GitHub with `npm publish --tag RC`; do NOT simply `npm publish` or your RC will overwrite the latest release
+  - Do a dry run with `npm publish --dry-run`
+  - Create an RC by running `npm run rc` (which is simply an alias for `npm version prerelease --preid RC`)
+    - All RCs must be tagged with `RC`
+  - Push to your branch, and CI/CD will automatically publish your RC to npm + GitHub Package Repository
 
 4. **Prep for release**
   a. Update deps
@@ -54,7 +54,7 @@ Note: Most of these processes should be retired in favor of automated workflows,
   b. Update the changelog and docs
     - Just do it :)
   c. Assuming tests are passing: merge the PR
-  d. From master, tag: `npm version [major|minor|patch]`
-  e. Helpful but optional; dry run: `npm publish --dry-run`
-  f. `git push` and then `npm publish`
+  d. Helpful but optional; dry run: `npm publish --dry-run`
+  e. From master, tag: `npm version [major|minor|patch]`
+  f. `git push`
   g. Pour yourself a tasty beverage, because that was way too much ceremony
